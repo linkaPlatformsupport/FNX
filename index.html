@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNX Wallet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function updatePrice() {
+            const fnxAmount = document.getElementById('fnx-amount').value;
+            const tonPrice = fnxAmount * 0.1;
+            document.getElementById('ton-price').value = tonPrice.toFixed(2);
+        }
+
+        function updateFNX() {
+            const tonAmount = document.getElementById('ton-price').value;
+            const fnxAmount = tonAmount / 0.1;
+            document.getElementById('fnx-amount').value = fnxAmount.toFixed(0);
+        }
+
+        function buyFNX() {
+            const fnxAmount = document.getElementById('fnx-amount').value;
+            const tonPrice = document.getElementById('ton-price').value;
+            alert(`You are buying ${fnxAmount} FNX for ${tonPrice} TON`);
+            // اینجا باید کد مربوط به انتقال TON Coin به آدرس مورد نظر را اضافه کنید
+        }
+    </script>
+</head>
+<body>
+    <h1>FNX Wallet</h1>
+    <p>Your FNX Tokens: <span id="fnx-balance">0</span></p>
+
+    <label for="fnx-amount">Enter FNX amount:</label><br>
+    <input type="number" id="fnx-amount" oninput="updatePrice()"><br>
+
+    <label for="ton-price">Price in TON:</label><br>
+    <input type="number" id="ton-price" oninput="updateFNX()"><br>
+
+    <button onclick="buyFNX()">Buy FNX</button>
+</body>
+</html>
